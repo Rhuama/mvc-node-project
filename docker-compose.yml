@@ -1,4 +1,3 @@
-version: "3.9"
 services:
   db:
     image: mysql:latest
@@ -7,9 +6,3 @@ services:
       MYSQL_DATABASE: mvc-project
     ports:
       - "3306:3306"
-    networks:
-      - mvc-project_default
-
-networks:
-  mvc-project_default:
-    external: true
