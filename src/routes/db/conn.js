@@ -17,6 +17,10 @@ const sequelize = new Sequelize(
   try {
     await sequelize.authenticate();
     console.log('Conexão bem-sucedida com o banco de dados!');
+    
+    const [results, metadata] = await sequelize.query("SHOW TABLES");
+    console.log('Tabelas no banco de dados:', results);
+    
   } catch (error) {
     console.error('Erro ao conectar ao banco de dados:', error.message);
   } finally {
