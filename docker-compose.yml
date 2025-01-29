@@ -1,27 +1,43 @@
 services:
-  app:
+  frontend:
     build:
-      context: .
+      context: ./src/Frontend
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
-    volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
     environment:
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app
+    command: npm run dev
+
+  backend:
+    build:
+      context: ./src/Backend
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./backend:/app 
+    environment:
+      - NODE_ENV=development
       - DB_HOST=db
-      - DB_USER=root
-      - DB_PASSWORD=senha
-      - DB_NAME=mvc_project
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
     depends_on:
       - db
+    command: npm run dev
+
   db:
     image: mysql:latest
     container_name: mvc-node-project-db
     environment:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_DATABASE: ${DB_NAME}
-      MYSQL_USER: ${DB_USER}     
+      MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
     ports:
       - "3306:3306"
@@ -42,10 +58,6 @@ services:
       - "8080:3000"
     depends_on:
       - db
-    healthcheck:
-      test: curl --fail -I http://localhost:3000/api/health || exit 1
-      interval: 15s
-      timeout: 5s
-      retries: 5
+
 volumes:
   mysql_data:

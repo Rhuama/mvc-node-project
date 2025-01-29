@@ -7,27 +7,6 @@ export default function RegisterForm() {
     password: '',
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/register`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    });
-
-    if (response.ok) {
-      alert('Registration successful!');
-    } else {
-      alert('Registration failed.');
-    }
   };
 
   return (
@@ -38,8 +17,8 @@ export default function RegisterForm() {
           type="text"
           id="name"
           name="name"
-          value={formData.name}
-          onChange={handleChange}
+          // value={formData.name}
+          // onChange={handleChange}
           required
         />
       </div>
