@@ -3,7 +3,6 @@
 Este é um projeto fullstack que reúne estudos de frontend e backend, explorando conceitos essenciais como consumo de APIs, estruturação de código e banco de dados. A proposta vai além de um simples **To-Do** List, a ideia é trabalhar soluções que permite lista por usuários e um fluxo completo de CRUD.
 
 ---
-
 ## 🚀 Tecnologias Utilizadas  
 
 ### 🏗 **Backend**  
@@ -53,4 +52,5 @@ Sinta-se à vontade para abrir **issues** e **pull requests**!
 ---
 
 📌 Criado por <a href="https://www.linkedin.com/in/rhuamaneves/" target="_blank">Rhuama Neves</a> 🚀  
+🎨 <a href="https://www.figma.com/design/j5TvFANhYCjk7AF4UZrbKE/Lista-de-Tarefas-(Community)?node-id=3-376&p=f&t=19YrYBr1KRduu3Vs-0" target="_blank"> **Design do projeto** </a>
 
